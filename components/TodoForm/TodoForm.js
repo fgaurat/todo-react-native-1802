@@ -1,11 +1,12 @@
 import React,{useState} from "react";
 
 import {StyleSheet, View, Text,Button,TextInput } from "react-native";
+import { addTodo } from "../../core/services";
 
-export default function TodoForm() {
 
 
-    const [form, setForm] = useState({title:'The title'})
+export default function TodoForm({form,dispatch}) {
+
   return (
     <View>
       <TextInput
@@ -16,7 +17,7 @@ export default function TodoForm() {
         keyboardType="default"
         onChangeText={(text) => setForm({title:text})}
       />
-        <Button
+        <Button onPress={ e => addTodo(dispatch,form) }
           title="Ajout"
         ></Button>
 

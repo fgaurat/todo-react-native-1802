@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet,FlatList, ScrollView, Text, View, TouchableHighlight, Alert } from "react-native";
+import { loadTodos } from "../../core/services";
 
 const renderItem = ({ item:todo } ) => (
    <TouchableHighlight onPress={() => Alert.alert("Todo Info",todo.title)}>
@@ -7,12 +8,6 @@ const renderItem = ({ item:todo } ) => (
     </TouchableHighlight>
 );
 
-
-function loadTodos(dispatch){
-  fetch("http://192.168.1.13:3000/todos")
-  .then(resp => resp.json())
-  .then(todos => dispatch({type:'LOAD_TODO',payload:todos}))
-}
 
 
 export default function TodoList({todos,dispatch}) {
@@ -23,7 +18,7 @@ export default function TodoList({todos,dispatch}) {
     <FlatList
       data={todos}
       renderItem={renderItem}
-      keyExtractor={(todo) => todo.id}
+      keyExtractor={(todo) => `${todo.id}`}
     />
 
   );

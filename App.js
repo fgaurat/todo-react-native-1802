@@ -43,7 +43,7 @@ export default function App() {
     <SafeAreaView style={styles.cnt}>
       <Text style={styles.header}>TodoList</Text>
 
-      <TodoForm />
+      <TodoForm form={state.form} dispatch={dispatch}/>
       <TodoList todos={state.todos} dispatch={dispatch} />
 
       {/* <Counter/>
