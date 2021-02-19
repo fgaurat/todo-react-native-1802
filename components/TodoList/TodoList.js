@@ -13,7 +13,7 @@ const renderItem = ({ item:todo } ) => (
 export default function TodoList({todos,dispatch}) {
 
   useEffect( () => loadTodos(dispatch),[])
-
+  console.log(todos)
   return (
     <FlatList
       data={todos}

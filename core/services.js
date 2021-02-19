@@ -1,4 +1,5 @@
 export function loadTodos(dispatch) {
+    console.log('loadTodos')
   fetch("http://192.168.1.13:3000/todos")
     .then((resp) => resp.json())
     .then((todos) => dispatch({ type: "LOAD_TODO", payload: todos }));
@@ -16,3 +17,10 @@ export function addTodo(dispatch, form) {
   }).then(() => loadTodos(dispatch) );
 
 }
+
+
+
+
+
+
+

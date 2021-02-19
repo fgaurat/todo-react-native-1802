@@ -15,7 +15,7 @@ export default function TodoForm({form,dispatch}) {
         placeholder="Todo Title"
         accessibilityLabel="Todo title"
         keyboardType="default"
-        onChangeText={(text) => setForm({title:text})}
+        onChangeText={(text) => dispatch({type:'UPDATE_FORM',payload:{title:text}})}
       />
         <Button onPress={ e => addTodo(dispatch,form) }
           title="Ajout"
