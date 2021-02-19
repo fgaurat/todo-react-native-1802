@@ -7,15 +7,18 @@ const renderItem = ({ item:todo } ) => (
     </TouchableHighlight>
 );
 
-export default function TodoList() {
-  const [todos, setTodos] = useState([]);
 
-  
-  useEffect(() => {
-    fetch("http://192.168.1.13:3000/todos")
-      .then((resp) => resp.json())
-      .then((todos) => setTodos(todos));
-  }, []);
+function loadTodos(dispatch){
+  fetch("http://192.168.1.13:3000/todos")
+  .then(resp => resp.json())
+  .then(todos => dispatch({type:'LOAD_TODO',payload:todos}))
+}
+
+
+export default function TodoList({todos,dispatch}) {
+
+  useEffect( () => loadTodos(dispatch),[])
+
   return (
     <FlatList
       data={todos}
