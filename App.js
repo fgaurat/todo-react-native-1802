@@ -1,19 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Alert, Button, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import Counter from './components/Counter';
+import CounterReducer from './components/CounterReducer';
+import TodoList from './components/TodoList';
 
 export default function App() {
+
+  const onClickHello = () =>{
+    Alert.alert("Click !")
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.cnt}>
+      <Text style={styles.header}>TodoList</Text>
+      
+      <TodoList/>
+
+
+        {/* <Counter/>
+        <CounterReducer/> */}
+
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  header:{
+    textAlign:'center',
+    fontWeight:"bold",
+    fontSize:24,
+    backgroundColor: 'lightblue',
+    width:"100%"
+  },
+  cnt: {
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
