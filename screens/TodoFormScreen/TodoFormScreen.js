@@ -1,14 +1,13 @@
+import React, { Component } from "react";
+import { SafeAreaView, Text, View } from "react-native";
+import TodoForm from "../../components/TodoForm";
 
-
-import React, { Component } from 'react'
-import { Text, View } from 'react-native'
-import TodoForm from '../../components/TodoForm'
-
-
-export default function TodoFormScreen() {
-    return (
-        <View>
-                            <TodoForm/>
-        </View>
-    )
+export default function TodoFormScreen({ navigation, route }) {
+  const { form, dispatch } = route.params;
+  return (
+    
+    <SafeAreaView>
+      <TodoForm form={form} dispatch={dispatch} />
+    </SafeAreaView>
+  );
 }

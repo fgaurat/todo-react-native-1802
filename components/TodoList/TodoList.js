@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { StyleSheet,FlatList, ScrollView, Text, View, TouchableHighlight, Alert } from "react-native";
 import { loadTodos } from "../../core/services";
+import { useFocusEffect, useRoute } from '@react-navigation/native';
+import { TodoContext } from "../../core/context";
 
 const renderItem = ({ item:todo } ) => (
    <TouchableHighlight onPress={() => Alert.alert("Todo Info",todo.title)}>
@@ -11,12 +13,10 @@ const renderItem = ({ item:todo } ) => (
 
 
 export default function TodoList({todos,dispatch}) {
-
-  useEffect( () => loadTodos(dispatch),[])
-  console.log(todos)
+  const todoContext = useContext(TodoContext)
   return (
     <FlatList
-      data={todos}
+      data={todoContext.todos}
       renderItem={renderItem}
       keyExtractor={(todo) => `${todo.id}`}
     />

@@ -2,10 +2,12 @@ import React,{useState} from "react";
 
 import {StyleSheet, View, Text,Button,TextInput } from "react-native";
 import { addTodo } from "../../core/services";
+import { useNavigation } from '@react-navigation/native';
 
 
 
 export default function TodoForm({form,dispatch}) {
+    const navigation = useNavigation();
 
   return (
     <View>
@@ -17,7 +19,10 @@ export default function TodoForm({form,dispatch}) {
         keyboardType="default"
         onChangeText={(text) => dispatch({type:'UPDATE_FORM',payload:{title:text}})}
       />
-        <Button onPress={ e => addTodo(dispatch,form) }
+        <Button onPress={ e => {
+            addTodo(dispatch,form)
+            navigation.goBack();
+        } }
           title="Ajout"
         ></Button>
 
